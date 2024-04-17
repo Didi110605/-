@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>кт3</title>
+</head>
+<body>
+    <div>
+        <ul class="menu" id="menu">
+            <li>Декоративная косметика
+                <ul class="submenu" id="submenu">
+                    <li>Для глаз
+                        <ul class="submenu" id="submenu">
+                            <li>Тени для век</li>
+                            <li>Карандаши для глаз</li>
+                            <li>Подводка</li>
+                        </ul>
+                    </li>
+                    <li>Для губ
+                        <ul class="submenu" id="submenu">
+                            <li>Помада</li>
+                            <li>Блеск</li>
+                            <li>Карандаш для губ</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Уходовая косметика
+                <ul class="submenu" id="submenu">
+                    <li>Для лица
+                        <ul class="submenu" id="submenu">
+                            <li>Пенка для умывания</li>
+                            <li>Тоник </li>
+                            <li>Маски</li>
+                        </ul>
+                    </li>
+                    <li>Для тела
+                        <ul class="submenu" id="submenu">
+                            <li>Скраб</li>
+                            <li>Лосьон</li>
+                            <li>Гель для душа</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        "use strict";
+let submenuAll = document.body.querySelectorAll(".submenu");
+for(let submenu of submenuAll) {submenu.hidden = true};
+for(let li of menu.querySelectorAll("li")) {
+    let span = document.createElement("span");
+    span.classList.add("show");
+    li.prepend(span);
+    span.append(span.nextSibling);
+}
+menu.onclick = function(event) {
+    if(event.target.tagName != "SPAN") return;
+    let childrenList = event.target.parentNode.querySelector("ul");
+    if(!childrenList){
+        alert("Ищите на www.cosmetikafromme.com Там есть всё, вся информация о продуктах");
+        return;
+    }
+    childrenList.hidden = !childrenList.hidden;
+    if(childrenList.hidden) {
+        event.target.classList.add("hide");
+        event.target.classList.remove("show");
+    } else {
+        event.target.classList.add("show");
+        event.target.classList.remove("hide");
+    }
+} 
+    </script>
+</body>
+</html>
